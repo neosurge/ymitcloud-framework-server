@@ -1,0 +1,22 @@
+{
+  "outPath": "./target/api-docs",
+  "serverUrl": "http://127.0.0.1:48080",
+  "allInOne": true,
+  "style": "xt256",
+  "createDebugPage": true,
+  "displayActualType": true,
+  "inlineEnum": true,
+  "requestHeaders": [
+    {
+      "name": "token",
+      "type": "string",
+      "desc": "用户访问鉴权凭证",
+      "required": true,
+      "excludePathPatterns": "/auth/login/**,/error/**",
+      "since": "-"
+    }
+  ],
+  "responseBodyAdvice": {
+    "className": "com.ymitcloud.framework.common.pojo.CommonResult"
+  }
+}

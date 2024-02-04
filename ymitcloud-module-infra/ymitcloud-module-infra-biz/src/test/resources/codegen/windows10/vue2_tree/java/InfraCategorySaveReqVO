@@ -1,0 +1,28 @@
+
+package com.ymitcloud.module.infra.controller.admin.demo.vo;
+
+
+
+import lombok.*;
+import java.util.*;
+import javax.validation.constraints.*;
+import java.util.*;
+
+
+/** 管理后台 - 分类新增/修改 Request VO */
+@Data
+public class InfraCategorySaveReqVO {
+
+    /** 编号*/
+    private Long id;
+
+    /** 名字*/
+    @NotEmpty(message = "名字不能为空")
+    private String name;
+
+    /** 父编号*/
+
+    @NotNull(message = "父编号不能为空")
+    private Long parentId;
+
+}

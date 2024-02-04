@@ -1,0 +1,4 @@
+
+com.ymitcloud.framework.quartz.config.YmitcloudQuartzAutoConfiguration
+com.ymitcloud.framework.quartz.config.YmitcloudAsyncAutoConfiguration
+

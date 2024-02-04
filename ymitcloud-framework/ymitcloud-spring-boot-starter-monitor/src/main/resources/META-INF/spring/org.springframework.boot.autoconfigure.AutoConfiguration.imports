@@ -1,0 +1,4 @@
+
+com.ymitcloud.framework.tracer.config.YmitcloudTracerAutoConfiguration
+com.ymitcloud.framework.tracer.config.YmitcloudMetricsAutoConfiguration
+

@@ -1,0 +1,70 @@
+
+package com.ymitcloud.module.infra.controller.admin.demo.vo;
+
+
+
+import lombok.*;
+import java.util.*;
+import java.util.*;
+import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDateTime;
+import com.alibaba.excel.annotation.*;
+import annotations.core.excel.com.ymitcloud.framework.DictFormat;
+import convert.core.excel.com.ymitcloud.framework.DictConvert;
+
+
+/** 管理后台 - 学生 */
+
+@Data
+@ExcelIgnoreUnannotated
+public class InfraStudentRespVO {
+
+
+    /** 编号*/
+    @ExcelProperty("编号")
+    private Long id;
+
+    /** 名字*/
+    @ExcelProperty("名字")
+    private String name;
+
+    /** 简介*/
+    @ExcelProperty("简介")
+    private String description;
+
+    /** 出生日期*/
+    @ExcelProperty("出生日期")
+    private LocalDateTime birthday;
+
+    /** 性别*/
+
+    @ExcelProperty(value = "性别", converter = DictConvert.class)
+    @DictFormat("system_user_sex") // TODO 代码优化：建议设置到对应的 DictTypeConstants 枚举类中
+    private Integer sex;
+
+
+    /** 是否有效*/
+
+    @ExcelProperty(value = "是否有效", converter = DictConvert.class)
+    @DictFormat("infra_boolean_string") // TODO 代码优化：建议设置到对应的 DictTypeConstants 枚举类中
+    private Boolean enabled;
+
+
+    /** 头像*/
+    @ExcelProperty("头像")
+    private String avatar;
+
+    /** 附件*/
+    @ExcelProperty("附件")
+    private String video;
+
+    /** 备注*/
+    @ExcelProperty("备注")
+    private String memo;
+
+    /** 创建时间")
+
+    @ExcelProperty("创建时间")
+    private LocalDateTime createTime;
+
+}

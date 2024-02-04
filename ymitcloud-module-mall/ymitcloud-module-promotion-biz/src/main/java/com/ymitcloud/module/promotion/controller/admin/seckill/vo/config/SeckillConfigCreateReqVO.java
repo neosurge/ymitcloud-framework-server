@@ -1,0 +1,19 @@
+package com.ymitcloud.module.promotion.controller.admin.seckill.vo.config;
+
+
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+
+/** 
+ * 管理后台 - 秒杀时段创建 Request VO
+ */
+
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class SeckillConfigCreateReqVO extends SeckillConfigBaseVO {
+
+}

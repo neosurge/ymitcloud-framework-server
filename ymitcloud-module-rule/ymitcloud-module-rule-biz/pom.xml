@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ymitcloud.boot</groupId>
+        <artifactId>ymitcloud-module-rule</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <artifactId>ymitcloud-module-rule-biz</artifactId>
+    <packaging>jar</packaging>
+    <name>${project.artifactId}</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ymitcloud.boot</groupId>
+            <artifactId>ymitcloud-module-rule-api</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!--Web 框架，全局异常、API 日志等-->
+        <dependency>
+            <groupId>com.ymitcloud.boot</groupId>
+            <artifactId>ymitcloud-spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- 业务组件 -->
+        <dependency>
+            <groupId>com.ymitcloud.boot</groupId>
+            <artifactId>ymitcloud-spring-boot-starter-biz-operatelog</artifactId>
+        </dependency>
+        <!-- Web 相关 -->
+        <dependency>
+            <groupId>com.ymitcloud.boot</groupId>
+            <artifactId>ymitcloud-spring-boot-starter-security</artifactId>
+        </dependency>
+        <!-- 测试 -->
+        <dependency>
+            <groupId>com.ymitcloud.boot</groupId>
+            <artifactId>ymitcloud-spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <!-- DB 相关 -->
+        <dependency>
+            <groupId>com.ymitcloud.boot</groupId>
+            <artifactId>ymitcloud-spring-boot-starter-mybatis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ymitcloud.boot</groupId>
+            <artifactId>ymitcloud-spring-boot-starter-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <!--LiteFlow 配置开始-->
+        <dependency>
+            <groupId>com.yomahub</groupId>
+            <artifactId>liteflow-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yomahub</groupId>
+            <artifactId>liteflow-rule-sql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yomahub</groupId>
+            <artifactId>liteflow-el-builder</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yomahub</groupId>
+            <artifactId>liteflow-script-groovy</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yomahub</groupId>
+            <artifactId>liteflow-script-graaljs</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yomahub</groupId>
+            <artifactId>liteflow-script-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yomahub</groupId>
+            <artifactId>liteflow-script-python</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yomahub</groupId>
+            <artifactId>liteflow-script-qlexpress</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yomahub</groupId>
+            <artifactId>liteflow-script-lua</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yomahub</groupId>
+            <artifactId>liteflow-script-aviator</artifactId>
+        </dependency>
+        <!--LiteFlow 配置结束-->
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2-extension-spring6</artifactId>
+        </dependency>
+    </dependencies>
+</project>
