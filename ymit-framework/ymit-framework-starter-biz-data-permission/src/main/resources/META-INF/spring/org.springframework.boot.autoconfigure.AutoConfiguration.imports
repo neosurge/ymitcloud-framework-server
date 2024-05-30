@@ -1,0 +1,2 @@
+com.ymit.framework.datapermission.config.YmitDataPermissionAutoConfiguration
+com.ymit.framework.datapermission.config.YmitDeptDataPermissionAutoConfiguration

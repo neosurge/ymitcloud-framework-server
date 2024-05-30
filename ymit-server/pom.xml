@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ymit.boot</groupId>
+        <artifactId>ymit</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <artifactId>ymit-server</artifactId>
+    <packaging>jar</packaging>
+    <name>${project.artifactId}</name>
+    <dependencies>
+        <!-- spring boot 配置所需依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- 服务保障相关 -->
+        <dependency>
+            <groupId>com.ymit.boot</groupId>
+            <artifactId>ymit-framework-starter-protection</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ymit.boot</groupId>
+            <artifactId>ymit-framework-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ymit.boot</groupId>
+            <artifactId>ymit-module</artifactId>
+            <version>${revision}</version>
+            <type>pom</type>
+            <!--            <scope>import</scope>-->
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ymit.boot</groupId>
+            <artifactId>ymit-module-system-biz</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ymit.boot</groupId>
+            <artifactId>ymit-module-infra-biz</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <!-- 打包 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal> <!-- 将引入的 jar 打入其中 -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.ly.smart-doc</groupId>
+                <artifactId>smart-doc-maven-plugin</artifactId>
+                <version>${smart-doc.version}</version>
+                <configuration>
+                    <!--指定生成文档的使用的配置文件-->
+                    <configFile>${basedir}/src/main/resources/smart-doc.json</configFile>
+                    <!--指定项目名称-->
+                    <projectName>ymit</projectName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>html</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

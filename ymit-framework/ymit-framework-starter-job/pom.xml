@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ymit.boot</groupId>
+        <artifactId>ymit-framework</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <packaging>jar</packaging>
+    <artifactId>ymit-framework-starter-job</artifactId>
+    <name>${project.artifactId}</name>
+    <description>定时任务相关配置
+        1. 定时任务，基于 Quartz 拓展
+        2. 异步任务，基于 Spring Async 拓展
+    </description>
+    <dependencies>
+        <dependency>
+            <groupId>com.ymit.boot</groupId>
+            <artifactId>ymit-common</artifactId>
+        </dependency>
+        <!-- Job 定时任务相关 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
+        <!-- 工具类相关 -->
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+    </dependencies>
+</project>

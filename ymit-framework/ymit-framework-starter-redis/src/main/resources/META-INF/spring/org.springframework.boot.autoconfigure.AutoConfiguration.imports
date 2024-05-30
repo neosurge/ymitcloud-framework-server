@@ -1,0 +1,3 @@
+com.ymit.framework.redis.config.YmitRedisAutoConfiguration
+com.ymit.framework.redis.config.YmitCacheAutoConfiguration
+

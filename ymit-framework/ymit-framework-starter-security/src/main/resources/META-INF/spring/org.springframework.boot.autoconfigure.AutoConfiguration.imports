@@ -1,0 +1,4 @@
+
+com.ymit.framework.security.config.YmitSecurityAutoConfiguration
+com.ymit.framework.security.config.YmitWebSecurityConfigurerAdapter
+

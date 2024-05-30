@@ -1,0 +1,2 @@
+com.ymit.framework.datasource.config.YmitDataSourceAutoConfiguration
+com.ymit.framework.mybatis.config.YmitMybatisAutoConfiguration

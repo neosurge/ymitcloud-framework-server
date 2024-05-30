@@ -1,0 +1,6 @@
+com.ymit.framework.apilog.config.YmitApiLogAutoConfiguration
+com.ymit.framework.jackson.config.YmitJacksonAutoConfiguration
+com.ymit.framework.web.config.YmitWebAutoConfiguration
+com.ymit.framework.xss.config.YmitXssAutoConfiguration
+
+
