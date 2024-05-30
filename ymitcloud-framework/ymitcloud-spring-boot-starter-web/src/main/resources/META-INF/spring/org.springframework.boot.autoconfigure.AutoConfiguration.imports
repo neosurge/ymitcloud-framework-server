@@ -1,6 +1,0 @@
-
-com.ymitcloud.framework.apilog.config.YmitcloudApiLogAutoConfiguration
-com.ymitcloud.framework.jackson.config.YmitcloudJacksonAutoConfiguration
-com.ymitcloud.framework.web.config.YmitcloudWebAutoConfiguration
-com.ymitcloud.framework.xss.config.YmitcloudXssAutoConfiguration
-

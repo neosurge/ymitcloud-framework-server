@@ -1,2 +1,0 @@
-org.springframework.boot.env.EnvironmentPostProcessor=\
-  com.ymitcloud.framework.mybatis.config.IdTypeEnvironmentPostProcessor
