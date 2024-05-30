@@ -1,0 +1,15 @@
+package ${basePackage}.module.${table.moduleName}.controller.${sceneEnum.basePackage}.${table.businessName.replace(
+    "/",".")}.vo;
+
+import lombok.*;
+
+/**
+* ${sceneEnum.name} - ${table.classComment}新增 Request VO
+*/
+
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class ${sceneEnum.prefixClass}${table.className}CreateReqVO extends ${sceneEnum.prefixClass}${table.className}SaveBaseVO {
+
+}

@@ -1,0 +1,241 @@
+<template>
+  <div>
+    <BasicTable @register="registerTable">
+      <template #toolbar>
+        <a-button type="primary" v-auth="['${permissionPrefix}:create']" :preIcon="IconEnum.ADD" @click="handleCreate">
+          {{ t('action.create') }}
+        </a-button>
+          #if ( $table.templateType == 2 )
+              #set ($TreeParentJavaField = $treeParentColumn.javaField.substring(0,1).toUpperCase() + ${treeParentColumn.javaField.substring(1)})##首字母大写
+              #set ($TreeNameJavaField = $treeNameColumn.javaField.substring(0,1).toUpperCase() + ${treeNameColumn.javaField.substring(1)})##首字母大写
+            <a-button @click="expandAll">
+              {{ t('component.tree.expandAll') }}
+            </a-button>
+            <a-button @click="collapseAll">
+              {{ t('component.tree.unExpandAll') }}
+            </a-button>
+          #end
+        <a-button v-auth="['${permissionPrefix}:export']" :preIcon="IconEnum.EXPORT" @click="handleExport">
+          {{ t('action.export') }}
+        </a-button>
+        <a-button
+            v-auth="['${permissionPrefix}:delete']"
+            type="primary"
+            danger
+            :disabled="!selectedRows.length"
+            :pre-icon="IconEnum.DELETE"
+            @click="handleDeleteBatch">
+          {{ t('action.delete') }}
+        </a-button>
+      </template>
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.key === 'action'">
+          <TableAction
+              :actions="[
+                  #if ( $table.templateType == 2 )
+                      {
+                      icon: IconEnum.ADD,
+                      size: 'small',
+                      label: t('action.createChild'),
+                      auth: '${permissionPrefix}:create',
+                      onClick: handleAddChild.bind(null, record),
+                      },
+                  #end
+                  {
+                  icon: IconEnum.EDIT,
+                  size: 'small',
+                  label: t('action.edit'),
+                  auth: '${permissionPrefix}:update',
+                  onClick: handleEdit.bind(null, record),
+                  },
+                  {
+                  icon: IconEnum.DELETE,
+                  size: 'small',
+                  danger: true,
+                  label: t('action.delete'),
+                  auth: '${permissionPrefix}:delete',
+                  popConfirm: {
+                  title: t('common.delMessage'),
+                  placement: 'left',
+                  confirm: handleDelete.bind(null, record),
+                  },
+                  },
+                  ]"/>
+        </template>
+      </template>
+    </BasicTable>
+    <${simpleClassName}Modal @register="registerModal" @success="reload()"/>
+  </div>
+</template>
+
+<script lang="ts" setup>
+  import {ref} from 'vue'
+  import {columns, searchFormSchema} from './'
+  import {handleTree} from '@/utils/tree';
+  import {useI18n} from '@/hooks/web/useI18n'
+  import {useMessage} from '@/hooks/web/useMessage'
+  import {useModal} from '@/components/Modal'
+  import {useTable} from '@/components/Table'
+
+  import {delete${simpleClassName}, export${simpleClassName}} from '@/api/'
+  import type {${simpleClassName}PageReqVO} from '@/api/system/';
+  import {isEmpty} from '@/utils/is';
+  import {clearUndefinedPath} from '@/utils/object';
+
+  defineOptions({name: '${table.className}'})
+
+  const {t} = useI18n()
+  const {createConfirm, createMessage} = useMessage()
+  const [registerModal, {openModal}] = useModal()
+  const selectedRows = ref([] as any[])
+  const selectRowKey = ref('');
+      #if ( $table.templateType == 2 )
+      const [registerTable, {expandAll, collapseAll, getForm, reload, getSelectRows}] = useTable({
+        title: '${table.classComment}列表',
+        api: load${simpleClassName}FullTree,
+        columns,
+        rowKey: 'id',
+        formConfig: {labelWidth: 120, schemas: searchFormSchema},
+        isTreeTable: true,
+        pagination: false,
+        useSearchForm: true,
+        showTableSetting: true,
+        actionColumn: {
+          width: 140,
+          title: t('common.action'),
+          dataIndex: 'action',
+          fixed: 'right',
+        },
+        customRow: (record, index) => {
+          return {
+            onClick: () => {
+              selectRowKey.value = record.id;
+            },
+          };
+        },
+        rowClassName: (record, index) => {
+          if (record.id === selectRowKey.value) {
+            return 'ant-table-row-selected';
+          }
+          return '';
+        },
+        afterFetch: (datas) => {
+          return setChildren(datas);
+        },
+        onExpand: async (expanded, record) => {
+          if (expanded) {
+            let params = {parentId: record.id};
+            let res = await get${simpleClassName}ListTree(params);
+            record.children = setChildren(res);
+          }
+        },
+      })
+
+      function load${simpleClassName}Data(params: ${simpleClassName}PageReqVO) {
+        clearUndefinedPath(params);
+        if (isEmpty(params)) {
+          params = {parentId: 0};
+        }
+        return get${simpleClassName}ListTree(params);
+      }
+
+      function setChildren(datas) {
+        for (let i = 0; i < datas.length; i++) {
+          let data = datas[i];
+          if (data.childrenCount && data.childrenCount > 0) {
+            data.children = [];
+          }
+        }
+        return datas;
+      }
+
+      async function load${simpleClassName}FullTree() {
+        const form = getForm();
+        const res = await get${simpleClassName}List(form.getFieldsValue() as any);
+        return handleTree(res, 'id');
+      }
+
+      function handleAddChild(record: Recordable) {
+        openModal(true, {record, isUpdate: false});
+      }
+      #else
+      const [registerTable, {getForm, reload, getSelectRows}] = useTable({
+        title: '${table.classComment}列表',
+        api: get${simpleClassName}Page,
+        columns,
+        rowKey: 'id',
+        formConfig: {labelWidth: 120, schemas: searchFormSchema},
+        useSearchForm: true,
+        showTableSetting: true,
+        actionColumn: {
+          width: 140,
+          title: t('common.action'),
+          dataIndex: 'action',
+          fixed: 'right',
+        },
+        customRow: (record, index) => {
+          return {
+            onClick: () => {
+              selectRowKey.value = record.id;
+            },
+          };
+        },
+        rowClassName: (record, index) => {
+          if (record.id === selectRowKey.value) {
+            return 'ant-table-row-selected';
+          }
+          return '';
+        },
+        rowSelection: {
+          checkStrictly: false,
+          onChange: (keys: [], rows: []) => {
+            console.log('selected:', keys, rows)
+            selectedRows.value = rows
+          },
+        },
+      })
+      #end
+  function handleCreate() {
+    openModal(true, {isUpdate: false})
+  }
+
+  function handleEdit(record: Recordable) {
+    openModal(true, {record, isUpdate: true})
+  }
+
+  async function handleExport() {
+    createConfirm({
+      iconType: 'warning',
+      title: t('common.exportTitle'),
+      content: t('common.exportMessage'),
+      async onOk() {
+        await export${simpleClassName}(getForm().getFieldsValue())
+        createMessage.success(t('common.exportSuccessText'))
+      },
+    })
+  }
+
+  async function handleDelete(record: Recordable) {
+    await delete${simpleClassName}([record.id])
+    createMessage.success(t('common.delSuccessText'))
+    reload()
+  }
+
+  async function handleDeleteBatch() {
+    selectedRows.value = getSelectRows()
+    if (!selectedRows.value.length) {
+      createMessage.warning(t('common.chooseText'))
+      return
+    }
+    createConfirm({
+      iconType: 'warning',
+      title: t('common.delText'),
+      content: t('common.delMessage'),
+      async onOk() {
+        await delete${simpleClassName}(selectedRows.value.map((item) => item.id))
+        createMessage.success(t('common.delSuccessText'))
+        reload()
+      },
+    })
+  }
+</script>

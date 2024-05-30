@@ -1,0 +1,4 @@
+com.ymit.framework.mq.redis.config.YmitRedisMQConsumerAutoConfiguration
+com.ymit.framework.mq.redis.config.YmitRedisMQProducerAutoConfiguration
+com.ymit.framework.mq.rabbitmq.config.YmitRabbitMQAutoConfiguration
+

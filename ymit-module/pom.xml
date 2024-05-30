@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ymit.boot</groupId>
+        <artifactId>ymit</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <artifactId>ymit-module</artifactId>
+    <packaging>pom</packaging>
+    <name>${project.artifactId}</name>
+    <description>业务模块的组合
+        业务模块按照 api 以及biz 的两个子模块组成，避免模块依赖问题。
+        moduleA只能引用moduleB的api，不能引用moduleB的biz
+        api中定义了对其他模块开放的接口及数据结构，biz中定义了具体的业务逻辑。
+    </description>
+    <modules>
+        <module>ymit-module-infra</module>
+        <module>ymit-module-system</module>
+    </modules>
+</project>

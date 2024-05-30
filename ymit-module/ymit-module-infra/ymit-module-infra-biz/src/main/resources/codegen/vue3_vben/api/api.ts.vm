@@ -1,0 +1,62 @@
+import {defHttp} from '@/utils/http/axios'
+#set ($baseURL = "/${table.moduleName}/${simpleClassName_strikeCase}")
+
+export interface ${simpleClassName}QueryReqVO extends PageParam {
+    #foreach ($column in $columns)
+        #if ($column.listOperation)
+            #if(${column.javaType.toLowerCase()} == "long" || ${column.javaType.toLowerCase()} ==
+                "integer" || ${column.javaType.toLowerCase()} == "double" || ${column.javaType.toLowerCase()} ==
+                "bigdecimal")
+                    ${column.javaField}?: number //${column.columnComment}
+            #elseif(${column.javaType.toLowerCase()} == "date" || ${column.javaType.toLowerCase()} == "localdatetime")
+                    ${column.javaField}?: Date[] //${column.columnComment}
+            #elseif(${column.javaType.toLowerCase()} == "string")
+                    ${column.javaField}?: ${column.javaType.toLowerCase()} //${column.columnComment}
+                #if(${column.columnLength} <= 32)
+                        ${column.javaField}s?: ${column.javaType.toLowerCase()}[] //${column.columnComment}集合
+                #end
+            #else
+                    ${column.javaField}?: ${column.javaType.toLowerCase()} //${column.columnComment}
+            #end
+        #end
+    #end
+}
+#if ( $table.templateType == 2 )
+// 查询${table.classComment}列表
+export function get${simpleClassName}List(params: ${simpleClassName}QueryReqVO) {
+    return defHttp.get({url: '${baseURL}/list', params})
+}
+// 查询${table.classComment}列表含上级和下级数量
+export function get${simpleClassName}ListTree(params: ${simpleClassName}QueryReqVO) {
+    return defHttp.get({url: '${baseURL}/list/tree', params})
+}
+#else
+// 查询${table.classComment}分页列表
+export function get${simpleClassName}Page(params: ${simpleClassName}QueryReqVO) {
+    return defHttp.get({url: '${baseURL}/page', params})
+}
+#end
+// 查询${table.classComment}详情
+export function get${simpleClassName}(id: number) {
+    return defHttp.get({url: `${baseURL}/get?id=${id}`})
+}
+
+// 新增${table.classComment}
+export function create${simpleClassName}(data) {
+    return defHttp.post({url: '${baseURL}/create', data})
+}
+
+// 修改${table.classComment}
+export function update${simpleClassName}(data) {
+    return defHttp.put({url: '${baseURL}/update', data})
+}
+
+// 删除${table.classComment}
+export function delete${simpleClassName}(ids: Array<number>) {
+    return defHttp.delete({url: `${baseURL}/delete?id=${ids.join(',')}`})
+}
+
+// 导出${table.classComment} Excel
+export function export${simpleClassName}(params: ${simpleClassName}QueryReqVO) {
+    return defHttp.download({url: '${baseURL}/export-excel', params}, '${table.classComment}.xls')
+}
