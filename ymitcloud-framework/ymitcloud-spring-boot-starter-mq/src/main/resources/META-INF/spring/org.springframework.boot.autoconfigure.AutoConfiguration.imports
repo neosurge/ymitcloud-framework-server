@@ -1,5 +1,0 @@
-
-com.ymitcloud.framework.mq.redis.config.YmitcloudRedisMQProducerAutoConfiguration
-com.ymitcloud.framework.mq.redis.config.YmitcloudRedisMQConsumerAutoConfiguration
-com.ymitcloud.framework.mq.rabbitmq.config.YmitcloudRabbitMQAutoConfiguration
-

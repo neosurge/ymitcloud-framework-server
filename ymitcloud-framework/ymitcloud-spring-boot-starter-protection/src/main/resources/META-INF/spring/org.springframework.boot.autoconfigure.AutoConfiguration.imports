@@ -1,4 +1,0 @@
-
-com.ymitcloud.framework.idempotent.config.YmitcloudIdempotentConfiguration
-com.ymitcloud.framework.lock4j.config.YmitcloudLock4jConfiguration
-

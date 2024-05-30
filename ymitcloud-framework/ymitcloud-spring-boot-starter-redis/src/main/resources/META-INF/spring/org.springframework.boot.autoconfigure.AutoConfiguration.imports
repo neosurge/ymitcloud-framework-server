@@ -1,4 +1,0 @@
-
-com.ymitcloud.framework.redis.config.YmitcloudRedisAutoConfiguration
-com.ymitcloud.framework.redis.config.YmitcloudCacheAutoConfiguration
-
