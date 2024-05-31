@@ -51,7 +51,7 @@ import static com.ymit.framework.common.util.collection.CollectionUtils.convertS
 @Slf4j
 public class AdminUserServiceImpl implements AdminUserService {
 
-    @Value("${sys.user.init-password:ymit}")
+    @Value("${sys.user.init-password:Fet744$fock@88}")
     private String userInitPassword;
 
     @Resource

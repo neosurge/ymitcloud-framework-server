@@ -22,7 +22,7 @@
         <module>ymit-framework-starter-excel</module>
         <module>ymit-framework-starter-file</module>
         <module>ymit-framework-starter-job</module>
-        <!--        <module>ymit-framework-starter-monitor</module>-->
+        <module>ymit-framework-starter-monitor</module>
         <module>ymit-framework-starter-mq</module>
         <module>ymit-framework-starter-mybatis</module>
         <module>ymit-framework-starter-protection</module>

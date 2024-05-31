@@ -12,7 +12,7 @@
 
     <properties>
         <revision>1.0.0</revision>
-        <spring.boot.version>3.2.2</spring.boot.version>
+        <spring.boot.version>3.2.6</spring.boot.version>
         <flatten-maven-plugin.version>1.5.0</flatten-maven-plugin.version>
         <!-- DB 相关 -->
         <druid.version>1.2.20</druid.version>
@@ -126,11 +126,11 @@
                 <artifactId>ymit-framework-starter-job</artifactId>
                 <version>${revision}</version>
             </dependency>
-            <!--            <dependency>-->
-            <!--                <groupId>com.ymit.boot</groupId>-->
-            <!--                <artifactId>ymit-framework-starter-monitor</artifactId>-->
-            <!--                <version>${revision}</version>-->
-            <!--            </dependency>-->
+            <dependency>
+                <groupId>com.ymit.boot</groupId>
+                <artifactId>ymit-framework-starter-monitor</artifactId>
+                <version>${revision}</version>
+            </dependency>
             <dependency>
                 <groupId>com.ymit.boot</groupId>
                 <artifactId>ymit-framework-starter-mq</artifactId>
@@ -171,22 +171,6 @@
                 <artifactId>ymit-module</artifactId>
                 <version>${revision}</version>
             </dependency>
-
-            <dependency>
-                <groupId>org.apache.skywalking</groupId>
-                <artifactId>apm-toolkit-trace</artifactId>
-                <version>${skywalking.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.skywalking</groupId>
-                <artifactId>apm-toolkit-logback-1.x</artifactId>
-                <version>${skywalking.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.skywalking</groupId>
-                <artifactId>apm-toolkit-opentracing</artifactId>
-                <version>${skywalking.version}</version>
-            </dependency>
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-starter-server</artifactId>
@@ -217,6 +201,21 @@
                 <groupId>io.opentracing</groupId>
                 <artifactId>opentracing-noop</artifactId>
                 <version>${opentracing.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.skywalking</groupId>
+                <artifactId>apm-toolkit-trace</artifactId>
+                <version>${skywalking.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.skywalking</groupId>
+                <artifactId>apm-toolkit-logback-1.x</artifactId>
+                <version>${skywalking.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.skywalking</groupId>
+                <artifactId>apm-toolkit-opentracing</artifactId>
+                <version>${skywalking.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.minio</groupId>

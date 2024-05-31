@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2024.05.15
  */
 @SuppressWarnings("SpringComponentScan")
-@SpringBootApplication(scanBasePackages = {"${ymit.info.base-package}"})
+@SpringBootApplication(scanBasePackages = {"${ymit.info.base-package}.server","${ymit.info.base-package}.module"})
 public class YmitServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(YmitServerApplication.class, args);

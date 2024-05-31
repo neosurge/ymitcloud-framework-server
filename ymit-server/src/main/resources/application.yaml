@@ -1,6 +1,6 @@
 server:
   port: 38080
-debug: true
+debug: false
 
 spring:
   application:
@@ -164,7 +164,7 @@ logging:
   debug-enabled: true
   trace-enabled: true
   file:
-    name: ${user.home}/logs/${spring.application.name}.log # 日志文件名，全路径
+    name: ../logs/${spring.application.name}.log # ${user.home} 日志文件名，全路径
   level:
     # 配置自己写的 MyBatis Mapper 打印日志
     org.springframework.context.support.PostProcessorRegistrationDelegate: ERROR # TODO 先禁用，Spring Boot 3.X 存在部分错误的 WARN 提示
@@ -294,12 +294,15 @@ ymit:
     enable: true
     constants-class-list: #错误码枚举类
       - com.ymit.module.system.enums.ErrorCodeConstants
+      - com.ymit.module.infra.enums.ErrorCodeConstants
   # 多租户相关配置项
   tenant:
     enable: false #是否启用多租户
     ignore-urls: #需要忽略多租户的请求地址
     ignore-tables: #需要忽略多租户的表
-
+sys:
+  user:
+    init-password: Fet744$fock@88
 --- #################### 微信公众号、小程序相关配置 ####################
 wx:
   mp: # 公众号配置（必填），参见 https://github.com/Wechat-Group/WxJava/blob/develop/spring-boot-starters/wx-java-mp-spring-boot-starter/README.md 文档

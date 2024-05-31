@@ -2,8 +2,8 @@
     <!-- 引用 Spring Boot 的 logback 基础配置 -->
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
 
-    <!-- 变量 ymitcloud.info.base-package，基础业务包 -->
-    <springProperty scope="context" name="ymitcloud.info.base-package" source="ymitcloud.info.base-package"/>
+    <!-- 变量 ymit.info.base-package，基础业务包 -->
+    <springProperty scope="context" name="ymit.info.base-package" source="ymit.info.base-package"/>
 
     <!-- 格式化输出：%d 表示日期，%X{tid} SkWalking 链路追踪编号，%thread 表示线程名，%-5level：级别从左显示 5 个字符宽度，%msg：日志消息，%n是换行符 -->
     <property name="PATTERN_DEFAULT"

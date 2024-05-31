@@ -25,24 +25,24 @@ import org.springframework.context.annotation.Bean;
 @ConditionalOnProperty(prefix = "ymit.tracer", value = "enable", matchIfMissing = true)
 public class YmitTracerAutoConfiguration {
     // TODO @云码：重要。目前 opentracing 版本存在冲突，要么保证 skywalking，要么保证阿里云短信 sdk
-    @Bean
-    public TracerProperties bizTracerProperties() {
-        return new TracerProperties();
-    }
-
-    @Bean
-    public BizTraceAspect bizTracingAop() {
-        return new BizTraceAspect(this.tracer());
-    }
-
-    @Bean
-    public Tracer tracer() {
-        // 创建 SkywalkingTracer 对象
-        SkywalkingTracer tracer = new SkywalkingTracer();
-        // 设置为 GlobalTracer 的追踪器
-        GlobalTracer.register(tracer);
-        return tracer;
-    }
+//    @Bean
+//    public TracerProperties bizTracerProperties() {
+//        return new TracerProperties();
+//    }
+//
+//    @Bean
+//    public BizTraceAspect bizTracingAop() {
+//        return new BizTraceAspect(this.tracer());
+//    }
+//
+//    @Bean
+//    public Tracer tracer() {
+//        // 创建 SkywalkingTracer 对象
+//        SkywalkingTracer tracer = new SkywalkingTracer();
+//        // 设置为 GlobalTracer 的追踪器
+//        GlobalTracer.register(tracer);
+//        return tracer;
+//    }
 
     /**
      * 创建 TraceFilter 过滤器，响应 header 设置 traceId

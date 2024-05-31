@@ -237,8 +237,8 @@ public class OAuth2OpenController {
         OAuth2AccessTokenDO accessTokenDO = this.oauth2GrantService.grantImplicit(userId, this.getUserType(), client.getClientId(), scopes);
         Assert.notNull(accessTokenDO, "访问令牌不能为空"); // 防御性检查
         // 2. 拼接重定向的 URL
-        // noinspection unchecked
-        return OAuth2Utils.buildImplicitRedirectUri(redirectUri, accessTokenDO.getAccessToken(), state, accessTokenDO.getExpiresTime(), scopes, JsonUtils.parseObject(client.getAdditionalInformation(), Map.class));
+        @SuppressWarnings("unchecked") Map<String, Object> map = JsonUtils.parseObject(client.getAdditionalInformation(), Map.class);
+        return OAuth2Utils.buildImplicitRedirectUri(redirectUri, accessTokenDO.getAccessToken(), state, accessTokenDO.getExpiresTime(), scopes, map);
     }
 
     private String getAuthorizationCodeRedirect(Long userId, OAuth2ClientDO client, List<String> scopes, String redirectUri, String state) {

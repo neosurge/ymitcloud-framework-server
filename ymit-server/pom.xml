@@ -29,10 +29,13 @@
         </dependency>
         <dependency>
             <groupId>com.ymit.boot</groupId>
-            <artifactId>ymit-module</artifactId>
+            <artifactId>ymit-module-system-biz</artifactId>
             <version>${revision}</version>
-            <type>pom</type>
-            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ymit.boot</groupId>
+            <artifactId>ymit-module-infra-biz</artifactId>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
     <build>
