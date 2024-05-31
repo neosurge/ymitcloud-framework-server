@@ -47,4 +47,6 @@ nbdist/
 
 ### JRebel ###
 rebel.xml
+
+### smart-doc ###
 .smart-doc-dependency.json

@@ -104,5 +104,10 @@
             <groupId>com.ymit.boot</groupId>
             <artifactId>ymit-framework-starter-file</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>

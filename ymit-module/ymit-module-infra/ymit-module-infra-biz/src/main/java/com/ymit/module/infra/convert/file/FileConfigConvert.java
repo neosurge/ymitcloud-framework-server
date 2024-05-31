@@ -4,6 +4,7 @@ import com.ymit.module.infra.controller.admin.file.vo.config.FileConfigSaveReqVO
 import com.ymit.module.infra.dal.dataobject.file.FileConfigDO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -16,7 +17,10 @@ public interface FileConfigConvert {
 
     FileConfigConvert INSTANCE = Mappers.getMapper(FileConfigConvert.class);
 
-    @Mapping(target = "config", ignore = true)
+    @Mappings({
+            @Mapping(target = "config", ignore = true),
+            @Mapping(target = "master", ignore = true)
+    })
     FileConfigDO convert(FileConfigSaveReqVO bean);
 
 }
