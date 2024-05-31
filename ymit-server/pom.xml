@@ -32,18 +32,7 @@
             <artifactId>ymit-module</artifactId>
             <version>${revision}</version>
             <type>pom</type>
-            <!--            <scope>import</scope>-->
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.ymit.boot</groupId>
-            <artifactId>ymit-module-system-biz</artifactId>
-            <version>${revision}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ymit.boot</groupId>
-            <artifactId>ymit-module-infra-biz</artifactId>
-            <version>${revision}</version>
         </dependency>
     </dependencies>
     <build>
